@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.ssm.mapper.JkMapper" >
+  <resultMap id="BaseResultMap" type="com.project.ssm.model.Jk" >
+    <constructor >
+      <idArg column="jid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="jtime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="jqx" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="jyq" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="jyt" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="jje" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="jtg" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ufid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="jzt" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hksm" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hkfs" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="jyh" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    jid, uid, jtime, jqx, jyq, jyt, jje, jtg, ufid, jzt, hksm, hkfs, jyh
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_jk
+    where jid = #{jid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_jk
+    where jid = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.ssm.model.Jk" >
+    insert into t_jk (jid, uid, jtime, 
+      jqx, jyq, jyt, jje, 
+      jtg, ufid, jzt, hksm, 
+      hkfs, jyh)
+    values (#{jid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{jtime,jdbcType=VARCHAR}, 
+      #{jqx,jdbcType=INTEGER}, #{jyq,jdbcType=INTEGER}, #{jyt,jdbcType=INTEGER}, #{jje,jdbcType=DOUBLE}, 
+      #{jtg,jdbcType=INTEGER}, #{ufid,jdbcType=VARCHAR}, #{jzt,jdbcType=INTEGER}, #{hksm,jdbcType=INTEGER}, 
+      #{hkfs,jdbcType=INTEGER}, #{jyh,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.ssm.model.Jk" >
+    insert into t_jk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jid != null" >
+        jid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="jtime != null" >
+        jtime,
+      </if>
+      <if test="jqx != null" >
+        jqx,
+      </if>
+      <if test="jyq != null" >
+        jyq,
+      </if>
+      <if test="jyt != null" >
+        jyt,
+      </if>
+      <if test="jje != null" >
+        jje,
+      </if>
+      <if test="jtg != null" >
+        jtg,
+      </if>
+      <if test="ufid != null" >
+        ufid,
+      </if>
+      <if test="jzt != null" >
+        jzt,
+      </if>
+      <if test="hksm != null" >
+        hksm,
+      </if>
+      <if test="hkfs != null" >
+        hkfs,
+      </if>
+      <if test="jyh != null" >
+        jyh,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jid != null" >
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="jtime != null" >
+        #{jtime,jdbcType=VARCHAR},
+      </if>
+      <if test="jqx != null" >
+        #{jqx,jdbcType=INTEGER},
+      </if>
+      <if test="jyq != null" >
+        #{jyq,jdbcType=INTEGER},
+      </if>
+      <if test="jyt != null" >
+        #{jyt,jdbcType=INTEGER},
+      </if>
+      <if test="jje != null" >
+        #{jje,jdbcType=DOUBLE},
+      </if>
+      <if test="jtg != null" >
+        #{jtg,jdbcType=INTEGER},
+      </if>
+      <if test="ufid != null" >
+        #{ufid,jdbcType=VARCHAR},
+      </if>
+      <if test="jzt != null" >
+        #{jzt,jdbcType=INTEGER},
+      </if>
+      <if test="hksm != null" >
+        #{hksm,jdbcType=INTEGER},
+      </if>
+      <if test="hkfs != null" >
+        #{hkfs,jdbcType=INTEGER},
+      </if>
+      <if test="jyh != null" >
+        #{jyh,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.ssm.model.Jk" >
+    update t_jk
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="jtime != null" >
+        jtime = #{jtime,jdbcType=VARCHAR},
+      </if>
+      <if test="jqx != null" >
+        jqx = #{jqx,jdbcType=INTEGER},
+      </if>
+      <if test="jyq != null" >
+        jyq = #{jyq,jdbcType=INTEGER},
+      </if>
+      <if test="jyt != null" >
+        jyt = #{jyt,jdbcType=INTEGER},
+      </if>
+      <if test="jje != null" >
+        jje = #{jje,jdbcType=DOUBLE},
+      </if>
+      <if test="jtg != null" >
+        jtg = #{jtg,jdbcType=INTEGER},
+      </if>
+      <if test="ufid != null" >
+        ufid = #{ufid,jdbcType=VARCHAR},
+      </if>
+      <if test="jzt != null" >
+        jzt = #{jzt,jdbcType=INTEGER},
+      </if>
+      <if test="hksm != null" >
+        hksm = #{hksm,jdbcType=INTEGER},
+      </if>
+      <if test="hkfs != null" >
+        hkfs = #{hkfs,jdbcType=INTEGER},
+      </if>
+      <if test="jyh != null" >
+        jyh = #{jyh,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where jid = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.ssm.model.Jk" >
+    update t_jk
+    set uid = #{uid,jdbcType=VARCHAR},
+      jtime = #{jtime,jdbcType=VARCHAR},
+      jqx = #{jqx,jdbcType=INTEGER},
+      jyq = #{jyq,jdbcType=INTEGER},
+      jyt = #{jyt,jdbcType=INTEGER},
+      jje = #{jje,jdbcType=DOUBLE},
+      jtg = #{jtg,jdbcType=INTEGER},
+      ufid = #{ufid,jdbcType=VARCHAR},
+      jzt = #{jzt,jdbcType=INTEGER},
+      hksm = #{hksm,jdbcType=INTEGER},
+      hkfs = #{hkfs,jdbcType=INTEGER},
+      jyh = #{jyh,jdbcType=DOUBLE}
+    where jid = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

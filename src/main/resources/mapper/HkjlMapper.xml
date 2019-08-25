@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.ssm.mapper.HkjlMapper" >
+  <resultMap id="BaseResultMap" type="com.project.ssm.model.Hkjl" >
+    <constructor >
+      <idArg column="hid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="syje" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="hkje" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="htime" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hid, uid, syje, hkje, htime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_hkjl
+    where hid = #{hid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_hkjl
+    where hid = #{hid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.ssm.model.Hkjl" >
+    insert into t_hkjl (hid, uid, syje, 
+      hkje, htime)
+    values (#{hid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{syje,jdbcType=DOUBLE}, 
+      #{hkje,jdbcType=DOUBLE}, #{htime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.ssm.model.Hkjl" >
+    insert into t_hkjl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hid != null" >
+        hid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="syje != null" >
+        syje,
+      </if>
+      <if test="hkje != null" >
+        hkje,
+      </if>
+      <if test="htime != null" >
+        htime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hid != null" >
+        #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="syje != null" >
+        #{syje,jdbcType=DOUBLE},
+      </if>
+      <if test="hkje != null" >
+        #{hkje,jdbcType=DOUBLE},
+      </if>
+      <if test="htime != null" >
+        #{htime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.ssm.model.Hkjl" >
+    update t_hkjl
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="syje != null" >
+        syje = #{syje,jdbcType=DOUBLE},
+      </if>
+      <if test="hkje != null" >
+        hkje = #{hkje,jdbcType=DOUBLE},
+      </if>
+      <if test="htime != null" >
+        htime = #{htime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hid = #{hid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.ssm.model.Hkjl" >
+    update t_hkjl
+    set uid = #{uid,jdbcType=VARCHAR},
+      syje = #{syje,jdbcType=DOUBLE},
+      hkje = #{hkje,jdbcType=DOUBLE},
+      htime = #{htime,jdbcType=VARCHAR}
+    where hid = #{hid,jdbcType=INTEGER}
+  </update>
+</mapper>

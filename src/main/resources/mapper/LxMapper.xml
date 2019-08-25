@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.ssm.mapper.LxMapper" >
+  <resultMap id="BaseResultMap" type="com.project.ssm.model.Lx" >
+    <constructor >
+      <idArg column="lid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="min" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="max" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lx" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="wyj" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lid, min, max, lx, wyj
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_lx
+    where lid = #{lid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_lx
+    where lid = #{lid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.ssm.model.Lx" >
+    insert into t_lx (lid, min, max, 
+      lx, wyj)
+    values (#{lid,jdbcType=INTEGER}, #{min,jdbcType=INTEGER}, #{max,jdbcType=INTEGER}, 
+      #{lx,jdbcType=DOUBLE}, #{wyj,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.ssm.model.Lx" >
+    insert into t_lx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lid != null" >
+        lid,
+      </if>
+      <if test="min != null" >
+        min,
+      </if>
+      <if test="max != null" >
+        max,
+      </if>
+      <if test="lx != null" >
+        lx,
+      </if>
+      <if test="wyj != null" >
+        wyj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lid != null" >
+        #{lid,jdbcType=INTEGER},
+      </if>
+      <if test="min != null" >
+        #{min,jdbcType=INTEGER},
+      </if>
+      <if test="max != null" >
+        #{max,jdbcType=INTEGER},
+      </if>
+      <if test="lx != null" >
+        #{lx,jdbcType=DOUBLE},
+      </if>
+      <if test="wyj != null" >
+        #{wyj,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.ssm.model.Lx" >
+    update t_lx
+    <set >
+      <if test="min != null" >
+        min = #{min,jdbcType=INTEGER},
+      </if>
+      <if test="max != null" >
+        max = #{max,jdbcType=INTEGER},
+      </if>
+      <if test="lx != null" >
+        lx = #{lx,jdbcType=DOUBLE},
+      </if>
+      <if test="wyj != null" >
+        wyj = #{wyj,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where lid = #{lid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.ssm.model.Lx" >
+    update t_lx
+    set min = #{min,jdbcType=INTEGER},
+      max = #{max,jdbcType=INTEGER},
+      lx = #{lx,jdbcType=DOUBLE},
+      wyj = #{wyj,jdbcType=DOUBLE}
+    where lid = #{lid,jdbcType=INTEGER}
+  </update>
+</mapper>

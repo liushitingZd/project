@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.ssm.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.project.ssm.model.User" >
+    <constructor >
+      <idArg column="uid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="usex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="utel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="upwd" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uemail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uxy" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hmd" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ujf" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="umy" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uwork" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uimage" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="utime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uty" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="umarry" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="usfz" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ubirth" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uson" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uxl" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uyhzh" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ufh" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="usfimage" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="salt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="locked" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, usex, utel, upwd, uname, uemail, uxy, hmd, ujf, umy, uwork, uimage, utime, uty, 
+    umarry, usfz, ubirth, uson, uxl, uyhzh, ufh, usfimage, salt, locked
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_user
+    where uid = #{uid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.project.ssm.model.User" >
+    insert into t_user (uid, usex, utel, 
+      upwd, uname, uemail, 
+      uxy, hmd, ujf, umy, 
+      uwork, uimage, utime, 
+      uty, umarry, usfz, 
+      ubirth, uson, uxl, 
+      uyhzh, ufh, usfimage, 
+      salt, locked)
+    values (#{uid,jdbcType=VARCHAR}, #{usex,jdbcType=VARCHAR}, #{utel,jdbcType=VARCHAR}, 
+      #{upwd,jdbcType=VARCHAR}, #{uname,jdbcType=VARCHAR}, #{uemail,jdbcType=VARCHAR}, 
+      #{uxy,jdbcType=INTEGER}, #{hmd,jdbcType=INTEGER}, #{ujf,jdbcType=INTEGER}, #{umy,jdbcType=INTEGER}, 
+      #{uwork,jdbcType=INTEGER}, #{uimage,jdbcType=VARCHAR}, #{utime,jdbcType=VARCHAR}, 
+      #{uty,jdbcType=INTEGER}, #{umarry,jdbcType=INTEGER}, #{usfz,jdbcType=VARCHAR}, 
+      #{ubirth,jdbcType=VARCHAR}, #{uson,jdbcType=INTEGER}, #{uxl,jdbcType=INTEGER}, 
+      #{uyhzh,jdbcType=VARCHAR}, #{ufh,jdbcType=INTEGER}, #{usfimage,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{locked,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.ssm.model.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="usex != null" >
+        usex,
+      </if>
+      <if test="utel != null" >
+        utel,
+      </if>
+      <if test="upwd != null" >
+        upwd,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="uemail != null" >
+        uemail,
+      </if>
+      <if test="uxy != null" >
+        uxy,
+      </if>
+      <if test="hmd != null" >
+        hmd,
+      </if>
+      <if test="ujf != null" >
+        ujf,
+      </if>
+      <if test="umy != null" >
+        umy,
+      </if>
+      <if test="uwork != null" >
+        uwork,
+      </if>
+      <if test="uimage != null" >
+        uimage,
+      </if>
+      <if test="utime != null" >
+        utime,
+      </if>
+      <if test="uty != null" >
+        uty,
+      </if>
+      <if test="umarry != null" >
+        umarry,
+      </if>
+      <if test="usfz != null" >
+        usfz,
+      </if>
+      <if test="ubirth != null" >
+        ubirth,
+      </if>
+      <if test="uson != null" >
+        uson,
+      </if>
+      <if test="uxl != null" >
+        uxl,
+      </if>
+      <if test="uyhzh != null" >
+        uyhzh,
+      </if>
+      <if test="ufh != null" >
+        ufh,
+      </if>
+      <if test="usfimage != null" >
+        usfimage,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="locked != null" >
+        locked,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="usex != null" >
+        #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="utel != null" >
+        #{utel,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null" >
+        #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="uxy != null" >
+        #{uxy,jdbcType=INTEGER},
+      </if>
+      <if test="hmd != null" >
+        #{hmd,jdbcType=INTEGER},
+      </if>
+      <if test="ujf != null" >
+        #{ujf,jdbcType=INTEGER},
+      </if>
+      <if test="umy != null" >
+        #{umy,jdbcType=INTEGER},
+      </if>
+      <if test="uwork != null" >
+        #{uwork,jdbcType=INTEGER},
+      </if>
+      <if test="uimage != null" >
+        #{uimage,jdbcType=VARCHAR},
+      </if>
+      <if test="utime != null" >
+        #{utime,jdbcType=VARCHAR},
+      </if>
+      <if test="uty != null" >
+        #{uty,jdbcType=INTEGER},
+      </if>
+      <if test="umarry != null" >
+        #{umarry,jdbcType=INTEGER},
+      </if>
+      <if test="usfz != null" >
+        #{usfz,jdbcType=VARCHAR},
+      </if>
+      <if test="ubirth != null" >
+        #{ubirth,jdbcType=VARCHAR},
+      </if>
+      <if test="uson != null" >
+        #{uson,jdbcType=INTEGER},
+      </if>
+      <if test="uxl != null" >
+        #{uxl,jdbcType=INTEGER},
+      </if>
+      <if test="uyhzh != null" >
+        #{uyhzh,jdbcType=VARCHAR},
+      </if>
+      <if test="ufh != null" >
+        #{ufh,jdbcType=INTEGER},
+      </if>
+      <if test="usfimage != null" >
+        #{usfimage,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        #{locked,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.ssm.model.User" >
+    update t_user
+    <set >
+      <if test="usex != null" >
+        usex = #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="utel != null" >
+        utel = #{utel,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        upwd = #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null" >
+        uemail = #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="uxy != null" >
+        uxy = #{uxy,jdbcType=INTEGER},
+      </if>
+      <if test="hmd != null" >
+        hmd = #{hmd,jdbcType=INTEGER},
+      </if>
+      <if test="ujf != null" >
+        ujf = #{ujf,jdbcType=INTEGER},
+      </if>
+      <if test="umy != null" >
+        umy = #{umy,jdbcType=INTEGER},
+      </if>
+      <if test="uwork != null" >
+        uwork = #{uwork,jdbcType=INTEGER},
+      </if>
+      <if test="uimage != null" >
+        uimage = #{uimage,jdbcType=VARCHAR},
+      </if>
+      <if test="utime != null" >
+        utime = #{utime,jdbcType=VARCHAR},
+      </if>
+      <if test="uty != null" >
+        uty = #{uty,jdbcType=INTEGER},
+      </if>
+      <if test="umarry != null" >
+        umarry = #{umarry,jdbcType=INTEGER},
+      </if>
+      <if test="usfz != null" >
+        usfz = #{usfz,jdbcType=VARCHAR},
+      </if>
+      <if test="ubirth != null" >
+        ubirth = #{ubirth,jdbcType=VARCHAR},
+      </if>
+      <if test="uson != null" >
+        uson = #{uson,jdbcType=INTEGER},
+      </if>
+      <if test="uxl != null" >
+        uxl = #{uxl,jdbcType=INTEGER},
+      </if>
+      <if test="uyhzh != null" >
+        uyhzh = #{uyhzh,jdbcType=VARCHAR},
+      </if>
+      <if test="ufh != null" >
+        ufh = #{ufh,jdbcType=INTEGER},
+      </if>
+      <if test="usfimage != null" >
+        usfimage = #{usfimage,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        locked = #{locked,jdbcType=INTEGER},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.ssm.model.User" >
+    update t_user
+    set usex = #{usex,jdbcType=VARCHAR},
+      utel = #{utel,jdbcType=VARCHAR},
+      upwd = #{upwd,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR},
+      uemail = #{uemail,jdbcType=VARCHAR},
+      uxy = #{uxy,jdbcType=INTEGER},
+      hmd = #{hmd,jdbcType=INTEGER},
+      ujf = #{ujf,jdbcType=INTEGER},
+      umy = #{umy,jdbcType=INTEGER},
+      uwork = #{uwork,jdbcType=INTEGER},
+      uimage = #{uimage,jdbcType=VARCHAR},
+      utime = #{utime,jdbcType=VARCHAR},
+      uty = #{uty,jdbcType=INTEGER},
+      umarry = #{umarry,jdbcType=INTEGER},
+      usfz = #{usfz,jdbcType=VARCHAR},
+      ubirth = #{ubirth,jdbcType=VARCHAR},
+      uson = #{uson,jdbcType=INTEGER},
+      uxl = #{uxl,jdbcType=INTEGER},
+      uyhzh = #{uyhzh,jdbcType=VARCHAR},
+      ufh = #{ufh,jdbcType=INTEGER},
+      usfimage = #{usfimage,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      locked = #{locked,jdbcType=INTEGER}
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+</mapper>

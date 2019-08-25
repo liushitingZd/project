@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.ssm.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.project.ssm.model.Role" >
+    <constructor >
+      <idArg column="rid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="rname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="available" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="desca" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rid, rname, available, desca
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_role
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_role
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.project.ssm.model.Role" >
+    insert into t_role (rid, rname, available, 
+      desca)
+    values (#{rid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{available,jdbcType=INTEGER}, 
+      #{desca,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.project.ssm.model.Role" >
+    insert into t_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="rname != null" >
+        rname,
+      </if>
+      <if test="available != null" >
+        available,
+      </if>
+      <if test="desca != null" >
+        desca,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="rname != null" >
+        #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null" >
+        #{available,jdbcType=INTEGER},
+      </if>
+      <if test="desca != null" >
+        #{desca,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.ssm.model.Role" >
+    update t_role
+    <set >
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null" >
+        available = #{available,jdbcType=INTEGER},
+      </if>
+      <if test="desca != null" >
+        desca = #{desca,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.ssm.model.Role" >
+    update t_role
+    set rname = #{rname,jdbcType=VARCHAR},
+      available = #{available,jdbcType=INTEGER},
+      desca = #{desca,jdbcType=VARCHAR}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>
